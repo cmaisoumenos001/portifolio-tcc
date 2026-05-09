@@ -8,29 +8,35 @@
 
 <h1>Cadastro</h1>
 
-    <form action="/cadastro" method="post">
+    <form action="/Fcadastro" method="post">
         <label>Nome Completo:</label>
         <input type="text" name="nome" step="any" required>
-        <br><br></form>
-    <form action="/cadastro" method="post">
+        <br><br>
+  
          <label>Email:       </label>
          <input type="text" name="email" step="any" required>
-         <br><br></form>
-    <form action="/cadastro" method="post">
+         <br><br>
+
         <label>telefone:     </label>
         <input type="text" name="fone" step="any" required>
-        <br><br></form>
-    <form action="/cadastro" method="post">
+        <br><br>
+
         <label>curso:        </label>
         <input type="text" name="curso" step="any" required>
-        <br><br></form>
-    <form action="/cadastro" method="post">
+        <br><br>
+
         <label>série:        </label>
         <input type="number" name="serie" step="any" required>
-        <br><br></form>
-    <form action="/cadastro" method="post">
+        <br><br>
+    
         <label>senha:        </label>
         <input type="text" name="senha" step="any" required>
-        <br><br></form>
+        <br><br>
+
+        <button type="submit">cadastrar</button>
+    </form>
+
+<a href="{{url_for ('login')}}">enviar cadastro</a>
+
 </body>
 </html>

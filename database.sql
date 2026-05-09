@@ -40,4 +40,4 @@ foreign key (id_liga) references ligas(id_ligas)
 drop table inscricoes
 drop table ligas
 drop table usuario
-select * from ligas
+select * from usuario
