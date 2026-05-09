@@ -8,32 +8,32 @@
 
 <h1>Cadastro de Ligas</h1>
 
-    <form action="/liga" method="post">
+    <form action="/Fliga" method="post">
         <label>Nome da Liga:</label>
         <input type="text" name="liga" step="any" required>
-        <br><br></form>
-    <form action="/liga" method="post">
-         <label>Valor da Inscrição:</label>
-         <input type="text" name="valor" step="any" required>
-         <br><br></form>
-    <form action="/liga" method="post">
+        <br><br>
+        <label>Valor da Inscrição:</label>
+        <input type="text" name="valor" step="any" required>
+        <br><br>
         <label>Nome do criador/Admnistrador da liga:</label>
         <input type="text" name="nocr" step="any" required>
-        <br><br></form>
-    <form action="/liga" method="post">
-        <label>data de abertura das inscrições:</label>
-        <input type="text" name="datai" step="any" required>
-        <br><br></form>
-    <form action="/liga" method="post">
+        <br><br>>
+        <label>data de abertura das inicio:</label>
+        <input type="date" name="datai" step="any" required>
+        <br><br>
+        <label>fechamento de pagamento:</label>
+        <input type="date" name="fechamento" step="any" required>
+        <br><br>
         <label>descrição:</label>
-        <input type="number" name="dscr" step="any" required>
-        <br><br></form>
-    <form action="/liga" method="post">
+        <input type="text" name="dscr" step="any" required>
+        <br><br>
         <label>tipo(equipe, dupla, solo...):</label>
         <input type="text" name="tipo" step="any" required>
-        <br><br></form>
+        <br><br>
+        <button type="submit">criar liga</button>
+    </form>
 
-<a href="XXX">criar liga</a>
+
 
 </body>
 </html>

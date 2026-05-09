@@ -17,8 +17,10 @@ id_ligas int primary key identity(1,1),
 nome_da_liga varchar(30),
 valor decimal(5,2),
 criador_id int,
-data_criacao datetime,
+adm_liga varchar(50),
+data_criacao date,
 descricao varchar(500),
+fec_pag date,
 tipo varchar(15), --equipe, trio, dupla, solo
 status varchar(20),
 regras varchar(4096),
@@ -30,7 +32,7 @@ create table inscricoes(
 id_inscricao int primary key identity(1,1),
 id_user int,
 id_liga int,
-data_inscricao datetime,
+data_inscricao date,
 pago bit,
 
 foreign key (id_user) references usuario(id_user),
@@ -41,3 +43,8 @@ drop table inscricoes
 drop table ligas
 drop table usuario
 select * from usuario
+
+delete from ligas
+where id_ligas > 0
+
+select * from ligas

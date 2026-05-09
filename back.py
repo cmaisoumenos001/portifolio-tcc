@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 import pyodbc
 
 
@@ -23,10 +23,28 @@ def fcadastro():
         "insert into usuario (nome, email, fone, senha, curso, serie) values (?, ?, ?, ?, ?, ?)",
         (nome, email, fone, senha, curso, serie)
     )
+    
+    return render_template("login.html")
+    
+@app.route("/Fliga", methods=["POST"])
+def fliga():
+    liga = request.form["liga"]
+    valor = request.form["valor"]
+    admin = request.form["nocr"]
+    datai = request.form["datai"].replace("T", " ")
+    fechamento = request.form["fechamento"].replace("T", " ")
+    desc = request.form["dscr"]
+    tipo = request.form["tipo"]
+    
+    cursor.execute(
+        "insert into ligas (nome_da_liga, valor, adm_liga, data_criacao, descricao, fec_pag, tipo) values (?, ?, ?, ?, ?, ?, ?)",
+        (liga, valor, admin, datai, desc, fechamento, tipo)
+    )
     conn.commit()
     
-    return "cadastrado"
-    
+    return render_template("index.html")
+
+
     
 @app.route("/")
 def home():
