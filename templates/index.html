@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css')}}">
     <title>Document</title>
 </head>
 <body>
-    bom dia<br><br>
 
-    <a href="{{ url_for('cadastro')}}">cadastre-se</a><br>
-    <a href="{{url_for('login')}}">login</a><br>
-    <a href="{{url_for('ligas')}}">criar liga</a><br>
+<div class="sidebar">
+  <h2>Menu</h2>
+  <a href="/cadastro">Cadastrar-se</a>
+  <a href="/login">Login</a>
+  <a href="/liga">Criar liga</a>
+</div>
 
     
 </body>

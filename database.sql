@@ -44,7 +44,7 @@ drop table ligas
 drop table usuario
 select * from usuario
 
-delete from ligas
-where id_ligas > 0
+delete from usuario
+where id_user > 0
 
 select * from ligas
