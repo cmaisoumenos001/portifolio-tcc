@@ -10,28 +10,31 @@
 
     <form class="form" action="/Fliga" method="POST" enctype="multipart/form-data">
 
-    <label>Nome da Liga:</label>
+    <label>Nome da Liga:.</label>
     <input type="text" name="liga" required>
     <br><br>
-    <label>Valor:</label>
+    <label>Valor:...............</label>
     <input type="text" name="valor" required>
     <br><br>
-    <label>Administrador:</label>
-    <input type="text" name="nocr" required>
-    <br><br>
-    <label>Data início:</label>
+    <label>Data início:......</label>
     <input type="date" name="datai" required>
     <br><br>
-    <label>Fechamento:</label>
+    <label>Fechamento:....</label>
     <input type="date" name="fechamento" required>
     <br><br>
-    <label>Descrição:</label>
+    <label>Descrição:.......</label>
     <input type="text" name="dscr" required>
     <br><br>    
-    <label>Tipo:</label>
-    <input type="text" name="tipo" required>
+    <label>Tipo:...............</label>
+    <select name="Tipo" required>
+         <option value="">Selecione o tipo de liga</option>
+         <option value="1">Solo</option>
+         <option value="2">Duplas</option>
+         <option value="3">Trios</option>
+         <option value="4">Equipe</option>
+        </select>
     <br><br>
-    <label>Regras:</label>
+    <label>Regras:...........</label>
     <input type="file" name="regras" accept=".pdf,.txt" required>
     <br><br>
     <button type="submit">Criar liga</button>

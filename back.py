@@ -71,15 +71,25 @@ def flogin():
 def fliga():
     liga = request.form["liga"]
     valor = request.form["valor"]
-    admin = request.form["nocr"]
     datai = request.form["datai"].replace("T", " ")
     fechamento = request.form["fechamento"].replace("T", " ")
     desc = request.form["dscr"]
-    tipo = request.form["tipo"]
+    tipo = request.form["Tipo"]
     
     arquivo = request.files.get("regras")
     caminho = None
+    
+    
+    id_user = session.get("id_user")
 
+    cursor.execute(
+        "SELECT nome FROM usuario WHERE id_user = ?",
+        (id_user,)
+    )
+    user = cursor.fetchone()
+
+    admin = user[0] if user else None
+    
     if arquivo and permitido(arquivo.filename):
         nome_arquivo = secure_filename(arquivo.filename)
         caminho = os.path.join(app.config["UPLOAD_FOLDER"], nome_arquivo)
@@ -96,6 +106,13 @@ def fliga():
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename) 
+    
+    
+    
+    
+    
+    
+    
     
     
     
