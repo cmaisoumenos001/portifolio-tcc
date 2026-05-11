@@ -6,7 +6,7 @@ id_user int primary key identity(1,1),
 nome varchar(75),
 email varchar(50),
 fone varchar(20),
-senha varchar(20),
+senha varchar(2000),
 curso char(2),
 serie int,
 )
@@ -48,3 +48,6 @@ delete from usuario
 where id_user > 0
 
 select * from ligas
+
+
+

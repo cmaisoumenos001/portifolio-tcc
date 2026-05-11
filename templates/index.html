@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'style.css')}}">
-    <title>Document</title>
+    <title>Main Page</title>
 </head>
 <body>
 
 <div class="sidebar">
-  <h2>Menu</h2>
+  <h2 class="nome-user">Menu</h2>
 
   {% if not session.get("id_user") %}
       <a href="/cadastro">Cadastrar-se</a>
       <a href="/login">Login</a>
   {% endif %}
 
-  <a href="/liga">Criar liga</a>
+  <a href="/ligas">Criar liga</a>
   
   <div class="bottom">
     {% if session.get("id_user") %}

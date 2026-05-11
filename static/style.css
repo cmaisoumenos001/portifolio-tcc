@@ -40,9 +40,28 @@ body {
 
 .sidebar button {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
 .nome-user {
   color: white;
 }
+
+.form {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 120px;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.input {
+  flex: 1;
+}
+
+/* alinhar formularios, todos #############

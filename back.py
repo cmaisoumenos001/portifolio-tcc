@@ -28,7 +28,7 @@ def fcadastro():
     
     cursor.execute(
         "insert into usuario (nome, email, fone, senha, curso, serie) values (?, ?, ?, ?, ?, ?)",
-        (nome, email, fone, senha, curso, serie)
+        (nome, email, fone, senha_hash, curso, serie)
     )
     conn.commit()
     
@@ -115,3 +115,5 @@ def ligas():
 if __name__ == "__main__":
     app.run(debug=True)
     
+    #TODO colocar soma de idae ou tentar né kkkk colocar no forms para add pdf e txt para as regras da liga/campeonato
+    #TODO criar pasta e arquivo js
