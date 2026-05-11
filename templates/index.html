@@ -10,9 +10,25 @@
 
 <div class="sidebar">
   <h2>Menu</h2>
-  <a href="/cadastro">Cadastrar-se</a>
-  <a href="/login">Login</a>
+
+  {% if not session.get("id_user") %}
+      <a href="/cadastro">Cadastrar-se</a>
+      <a href="/login">Login</a>
+  {% endif %}
+
   <a href="/liga">Criar liga</a>
+  
+  <div class="bottom">
+    {% if session.get("id_user") %}
+    <p class = "nome-user">{{nome}}</p>
+
+    <form action="/logout" method="POST">
+      <button type="submit">logout</button>
+    </form>
+    {% else %}
+      <p class = "nome-user">visitante</p>
+    {% endif %}
+  </div>
 </div>
 
     

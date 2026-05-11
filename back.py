@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, url_for, session, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import timedelta
 import pyodbc
 
 
 app = Flask("__name__")
 app.secret_key = "C_Mais_Ou_Menos_1972"
+app.permanent_session_lifetime = timedelta(days=7)
 
 
 conn = pyodbc.connect(
@@ -20,6 +23,8 @@ def fcadastro():
     curso = request.form["curso"]
     serie = request.form["serie"]
     senha = request.form["senha"]
+    
+    senha_hash = generate_password_hash(senha)
     
     cursor.execute(
         "insert into usuario (nome, email, fone, senha, curso, serie) values (?, ?, ?, ?, ?, ?)",
@@ -59,7 +64,7 @@ def flogin():
     )
     user = cursor.fetchone()
     
-    if user and user[1] == senha:
+    if user and check_password_hash(user[1], senha):
         session["id_user"] = user[0]
         return redirect(url_for("home"))
     else:
@@ -74,12 +79,26 @@ def flogin():
     
     
     
+@app.route("/logout", methods = ["POST"])
+def logout():
+    session.clear()
     
+    return redirect(url_for("login"))
     
-    
+
 @app.route("/")
 def home():
-    return render_template("index.html")
+    nome = None
+
+    if "id_user" in session:
+        cursor.execute(
+            "select nome from usuario where id_user = ?",
+            (session["id_user"],)
+        )
+        user = cursor.fetchone()   
+        nome = user[0]     
+    
+    return render_template("index.html", nome=nome)
 
 @app.route("/cadastro")
 def cadastro():
