@@ -42,12 +42,13 @@ foreign key (id_liga) references ligas(id_ligas)
 drop table inscricoes
 drop table ligas
 drop table usuario
-select * from usuario
+select * from ligas
 
-delete from usuario
-where id_user > 0
+delete from ligas
+where id_ligas > 0
 
 select * from ligas
 
-
+ALTER TABLE ligas
+ADD regras VARCHAR(255);
 

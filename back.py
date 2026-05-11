@@ -1,12 +1,21 @@
-from flask import Flask, render_template, request, url_for, session, redirect
+from flask import Flask, render_template, request, url_for, session, redirect, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
 from datetime import timedelta
 import pyodbc
-
+import os
 
 app = Flask("__name__")
 app.secret_key = "C_Mais_Ou_Menos_1972"
 app.permanent_session_lifetime = timedelta(days=7)
+
+UPLOAD_FOLDER = "uploads"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+ALLOWED_EXTENSIONS = {"pdf", "txt"}
+
+def permitido(nome):
+    return "." in nome and nome.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 conn = pyodbc.connect(
@@ -34,23 +43,7 @@ def fcadastro():
     
     return render_template("login.html")
     
-@app.route("/Fliga", methods=["POST"])
-def fliga():
-    liga = request.form["liga"]
-    valor = request.form["valor"]
-    admin = request.form["nocr"]
-    datai = request.form["datai"].replace("T", " ")
-    fechamento = request.form["fechamento"].replace("T", " ")
-    desc = request.form["dscr"]
-    tipo = request.form["tipo"]
-    
-    cursor.execute(
-        "insert into ligas (nome_da_liga, valor, adm_liga, data_criacao, descricao, fec_pag, tipo) values (?, ?, ?, ?, ?, ?, ?)",
-        (liga, valor, admin, datai, desc, fechamento, tipo)
-    )
-    conn.commit()
-    
-    return render_template("index.html")
+
 
 
 @app.route("/flogin", methods=["POST"])
@@ -71,11 +64,38 @@ def flogin():
         return "login invalido"
     
     
+
+ 
     
+@app.route("/Fliga", methods=["POST"])
+def fliga():
+    liga = request.form["liga"]
+    valor = request.form["valor"]
+    admin = request.form["nocr"]
+    datai = request.form["datai"].replace("T", " ")
+    fechamento = request.form["fechamento"].replace("T", " ")
+    desc = request.form["dscr"]
+    tipo = request.form["tipo"]
     
+    arquivo = request.files.get("regras")
+    caminho = None
+
+    if arquivo and permitido(arquivo.filename):
+        nome_arquivo = secure_filename(arquivo.filename)
+        caminho = os.path.join(app.config["UPLOAD_FOLDER"], nome_arquivo)
+        arquivo.save(caminho)
     
+    cursor.execute(
+        "insert into ligas (nome_da_liga, valor, adm_liga, data_criacao, descricao, fec_pag, tipo, regras) values (?, ?, ?, ?, ?, ?, ?, ?)",
+        (liga, valor, admin, datai, desc, fechamento, tipo, caminho)
+    )
+    conn.commit()
     
+    return render_template("index.html")   
     
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename) 
     
     
     
@@ -115,5 +135,3 @@ def ligas():
 if __name__ == "__main__":
     app.run(debug=True)
     
-    #TODO colocar soma de idae ou tentar né kkkk colocar no forms para add pdf e txt para as regras da liga/campeonato
-    #TODO criar pasta e arquivo js
