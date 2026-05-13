@@ -19,7 +19,7 @@ def permitido(nome):
 
 
 conn = pyodbc.connect(
-    "driver={ODBC Driver 18 for SQL Server};server=DESKTOP-HILI2I3;database=tcc;trusted_connection=yes;trustservercertificate=yes;"
+    "driver={ODBC Driver 18 for SQL Server};server=localhost;database=tcc;trusted_connection=yes;trustservercertificate=yes;"
 )
 
 cursor = conn.cursor()
@@ -152,3 +152,4 @@ def ligas():
 if __name__ == "__main__":
     app.run(debug=True)
     
+#TODO sistema de verificação de email, sistema de verificação de sms se possivel, impedir criar liga sme login, criar tela de perfil e login/perfil de integrante do gremio, arrumar bota0 de se inscrever na liga
