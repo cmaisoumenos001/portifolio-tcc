@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <div class="sidebar">
   <h2 class="nome-user">Menu</h2>
 
@@ -16,15 +17,18 @@
       <a href="/login">Login</a>
   {% endif %}
 
+
+  {% if session.get("id_user") %}
   <a href="/ligas">Criar liga</a>
+  {% endif %}
   
   <div class="bottom">
     {% if session.get("id_user") %}
     <p class = "nome-user">{{nome}}</p>
 
-    <form action="/logout" method="POST">
-      <button type="submit">logout</button>
-    </form>
+  <form action="/logout" method="POST" onsubmit="return confirm('Tem certeza que quer sair?')">
+  <button type="submit">Logout</button>
+  </form>
     {% else %}
       <p class = "nome-user">visitante</p>
     {% endif %}
@@ -32,6 +36,7 @@
   </div>
 </div>
 
-    
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

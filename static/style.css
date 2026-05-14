@@ -55,13 +55,19 @@ body {
 }
 
 .label {
-  width: 120px;
+  width: 150px;
   text-align: right;
   margin-right: 15px;
 }
 
 .input {
   flex: 1;
+}
+.senha-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 /* alinhar formularios, todos #############

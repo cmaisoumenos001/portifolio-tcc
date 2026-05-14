@@ -31,9 +31,14 @@ def fcadastro():
     fone = request.form["fone"]
     curso = request.form["curso"]
     serie = request.form["serie"]
-    senha = request.form["senha"]
-    
+    senha = request.form["senha"]   
     senha_hash = generate_password_hash(senha)
+    
+    cursor.execute("SELECT * FROM usuario WHERE email = ?", (email,))
+    existe = cursor.fetchone()
+
+    if existe:
+        return render_template("cadastro.html", erro="Email já cadastrado")
     
     cursor.execute(
         "insert into usuario (nome, email, fone, senha, curso, serie) values (?, ?, ?, ?, ?, ?)",
@@ -61,10 +66,7 @@ def flogin():
         session["id_user"] = user[0]
         return redirect(url_for("home"))
     else:
-        return "login invalido"
-    
-    
-
+        return render_template("login.html", erro="Email ou senha inválidos")
  
     
 @app.route("/Fliga", methods=["POST"])
@@ -120,7 +122,7 @@ def uploaded_file(filename):
 def logout():
     session.clear()
     
-    return redirect(url_for("login"))
+    return redirect(url_for("home"))
     
 
 @app.route("/")
@@ -152,4 +154,4 @@ def ligas():
 if __name__ == "__main__":
     app.run(debug=True)
     
-#TODO sistema de verificação de email, sistema de verificação de sms se possivel, impedir criar liga sme login, criar tela de perfil e login/perfil de integrante do gremio, arrumar bota0 de se inscrever na liga
+#TODO sistema de verificação de email, sistema de verificação de sms se possivel, criar tela de perfil e login/perfil de integrante do gremio, arrumar bota0 de se inscrever na liga

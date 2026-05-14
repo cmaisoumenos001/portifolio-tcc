@@ -43,10 +43,13 @@
         </select>
         <br><br>
         <label class="label">senha:.................</label>
-        <input class="input" type="text" name="senha" step="any" required>
+        <div class="senha-container">
+        <input class="input" type="password" id="senha" name="senha" minlength="8" required>
+        <button type="button" onclick="toggleSenha()">👁️</button>
+        </div>
         <br><br>
         <button type="submit">cadastrar</button>
     </form>
-
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
