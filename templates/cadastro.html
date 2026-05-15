@@ -13,10 +13,10 @@
         <input class="input" type="text" name="nome" step="any" required>
         <br><br>
         <label class="label">Email:.................</label>
-        <input class="input" type="text" name="email" step="any" required>
+        <input class="input" type="email" name="email" step="any" required>
         <br><br>
         <label class="label">telefone:..............</label>
-        <input class="input" type="text" name="fone" step="any" required>
+        <input class="input" type="number" name="fone" step="any" required>
         <br><br>
         <label class="label">curso:..................</label>
         <select name="curso" required>
@@ -44,8 +44,13 @@
         <br><br>
         <label class="label">senha:.................</label>
         <div class="senha-container">
-        <input class="input" type="password" id="senha" name="senha" minlength="8" required>
-        <button type="button" onclick="toggleSenha()">👁️</button>
+        <input class="input" type="password" id="senha1" name="senha" minlength="8" required>
+        <button type="button" onclick="Senha('senha1')">👁️</button>
+        </div>
+        <label class="label">confirme sua senha</label>
+        <div class="senha-container">
+        <input class="input" type="password" id="senha2" minlength="8" required>
+        <button type="button" onclick="Senha('senha2')">👁️</button>
         </div>
         <br><br>
         <button type="submit">cadastrar</button>

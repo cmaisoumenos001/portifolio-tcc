@@ -12,12 +12,17 @@
     {% if erro %}
     <p style="color: red;">{{ erro }}</p>
     {% endif %}
+    
+    {% if sucesso %}
+    <p style="color:green">{{sucesso}}</p>
+    {% endif %}
 
         <label class="label">email:</label>
         <input class="input" type="text" name="email" step="any" required>
         <br><br>
         <label class="label">senha:</label>
-        <input class="input" type="text" name="senha" step="any" required>
+        <input class="input" type="password" id="senha" name="senha" required>
+        <button type="button" onclick="Senha('senha')">👁️</button>
         <br><br>
         <button type="submit">logar</button>
     </form>

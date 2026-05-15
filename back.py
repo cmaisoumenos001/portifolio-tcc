@@ -118,7 +118,7 @@ def uploaded_file(filename):
     
     
     
-@app.route("/logout", methods = ["POST"])
+@app.route("/logout", methods = ["GET", "POST"])
 def logout():
     session.clear()
     

@@ -27,7 +27,7 @@
     <p class = "nome-user">{{nome}}</p>
 
   <form action="/logout" method="POST" onsubmit="return confirm('Tem certeza que quer sair?')">
-  <button type="submit">Logout</button>
+  <button type="button" onclick="openLogoutModal()">Logout</button>
   </form>
     {% else %}
       <p class = "nome-user">visitante</p>
@@ -36,7 +36,14 @@
   </div>
 </div>
 
+<div id="modal-logout" class="modal">
+  <div class="modal-box">
+    <p>Tem certeza que quer sair?</p>
 
+    <button onclick="confirmLogout()">Sim</button>
+    <button onclick="closeModal()">Cancelar</button>
+  </div>
+</div>
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

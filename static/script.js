@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", function () {
+function openLogoutModal() {
+  document.getElementById("modal-logout").style.display = "flex";
+}
 
-    const form = document.getElementById("formLogout");
+function closeModal() {
+  document.getElementById("modal-logout").style.display = "none";
+}
 
-    if (form) {
-        form.addEventListener("submit", function (e) {
+function confirmLogout() {
+  window.location.href = "/logout";
+}
 
-            const confirmar = confirm("Tem certeza que quer sair?");
+function Senha(id) {
+  const senha = document.getElementById(id);
 
-            if (!confirmar) {
-                e.preventDefault(); 
-            }
+  if (!senha) return;
 
-        });
-    }
-
-});
+  senha.type = senha.type === "password" ? "text" : "password";
+}
