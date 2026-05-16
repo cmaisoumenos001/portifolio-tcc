@@ -7,27 +7,37 @@
     <title>Main Page</title>
 </head>
 <body>
+<div class="conteudo">
+  <h2>Ligas</h2>
 
-
+  {% if ligas %}
+    {% for liga in ligas %}
+      <p>{{ liga[1] }}</p>
+    {% endfor %}
+  {% else %}
+    <p>Nenhuma liga no momento</p>
+  {% endif %}
+</div>
 <div class="sidebar">
   <h2 class="nome-user">Menu</h2>
 
   {% if not session.get("id_user") %}
-      <a href="/cadastro">Cadastrar-se</a>
-      <a href="/login">Login</a>
+      <a href="/cadastro" class="botao-menu">Cadastrar-se</a>
+      <a href="/login" class="botao-menu">Login</a>
   {% endif %}
 
 
   {% if session.get("id_user") %}
-  <a href="/ligas">Criar liga</a>
+  <a href="/ligas" class="botao-menu">Criar liga</a>
   {% endif %}
-  
+
+
   <div class="bottom">
     {% if session.get("id_user") %}
     <p class = "nome-user">{{nome}}</p>
 
   <form action="/logout" method="POST" onsubmit="return confirm('Tem certeza que quer sair?')">
-  <button type="button" onclick="openLogoutModal()">Logout</button>
+  <button type="button" onclick="openLogoutModal()" class="botao-logout">Logout</button>
   </form>
     {% else %}
       <p class = "nome-user">visitante</p>
@@ -44,6 +54,8 @@
     <button onclick="closeModal()">Cancelar</button>
   </div>
 </div>
+
+
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

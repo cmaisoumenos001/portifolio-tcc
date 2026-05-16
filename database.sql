@@ -45,7 +45,7 @@ drop table usuario
 
 select * from usuario
 select * from ligas
-select + from inscricoes
+select * from inscricoes
 
 delete from usuario
 where id_user > 0
@@ -53,9 +53,4 @@ where id_user > 0
 delete from ligas
 where id_ligas > 0
 
-
-
-
-ALTER TABLE ligas
-ADD regras VARCHAR(255);
 
