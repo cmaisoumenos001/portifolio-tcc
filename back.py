@@ -197,4 +197,4 @@ def ligas():
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
     
-#TODO criar tela de perfil e login/perfil de integrante do gremio
+#TODO criar tela de perfil e login/perfil de integrante do gremio, CONECTAR LOGINTIME, PERFIL TIME, PERFIL E TIMES.

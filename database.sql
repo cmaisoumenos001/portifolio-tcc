@@ -39,6 +39,8 @@ foreign key (id_user) references usuario(id_user),
 foreign key (id_liga) references ligas(id_ligas)
 )
 
+create table
+
 drop table inscricoes
 drop table ligas
 drop table usuario
